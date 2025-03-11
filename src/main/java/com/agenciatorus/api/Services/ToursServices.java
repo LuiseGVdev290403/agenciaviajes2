@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ExpressionException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -222,5 +223,15 @@ public class ToursServices {
 
 
     }
+    //obtener por id
+    public ResponseEntity<?> obtenerTourId(Long id){
+        try {
+            Tours tours = toursRepository.findById(id).orElseThrow(()-> new ExpressionException("Hay un error"));
+            return ResponseEntity.ok().body(tours);
+        } catch (ExpressionException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
 }
