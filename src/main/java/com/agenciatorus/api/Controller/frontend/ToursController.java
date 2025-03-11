@@ -27,7 +27,7 @@ public class ToursController {
         return reservaServices.reservasAgregar(reservasDto);
     }
     @GetMapping("/tourid/{id}")
-    private  ResponseEntity<?> obtenerTour(@PathVariable Long id){
+    public  ResponseEntity<?> obtenerTour(@PathVariable Long id){
         return toursServices.obtenerTourId(id);
     }
     
