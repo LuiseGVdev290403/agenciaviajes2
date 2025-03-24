@@ -17,10 +17,10 @@ public class Users {
     private Long id;
 
     @Column(unique = true)
-    @NotBlank
+    @NotBlank // no puede servacio
     @Size(min = 4, max = 12)
     private String username;
-    @NotBlank
+    @NotBlank // no puede servacio
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
