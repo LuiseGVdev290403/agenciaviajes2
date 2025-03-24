@@ -50,6 +50,7 @@ public class UserServicesImpl implements UserServices{
         // devuelve la contraseña incriptada -> guarda encriptida la contraseña
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
+
         return userRepository.save(user);
     }
 }

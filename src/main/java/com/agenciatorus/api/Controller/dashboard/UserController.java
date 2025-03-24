@@ -2,6 +2,7 @@ package com.agenciatorus.api.Controller.dashboard;
 
 import com.agenciatorus.api.Entities.Users;
 import com.agenciatorus.api.Services.UserServices;
+import com.agenciatorus.api.Services.UserServicesImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +20,12 @@ public class UserController {
 
     @Autowired
     private UserServices userServices;
+
     @GetMapping
     public List<Users> List(){
         return userServices.findAll();
     }
+
     @PostMapping
     public ResponseEntity<?> create (@Valid @RequestBody Users users, BindingResult result){
         if(result.hasFieldErrors()){
@@ -30,6 +33,13 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(userServices.save(users));
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register (@Valid @RequestBody Users users, BindingResult result){
+       users.setAdmin(false);
+        return create(users, result);
+    }
+
 
     //validacion
     private  ResponseEntity<?> validation (BindingResult result){

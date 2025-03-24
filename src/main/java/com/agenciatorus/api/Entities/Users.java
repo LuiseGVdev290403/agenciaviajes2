@@ -1,5 +1,7 @@
 package com.agenciatorus.api.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -7,6 +9,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -21,9 +24,11 @@ public class Users {
     @Size(min = 4, max = 12)
     private String username;
     @NotBlank // no puede servacio
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // se excluye cuando se lee el json osea en el metodo get
+    //@JsonIgnore // elimina para leer y escribir osea post y get wq wbada
     private String password;
 
+    @JsonIgnoreProperties({"usersList", "handler", "hibernateLazyInitializer"}) //ignorada contenido que queramos de la lista de roles, el cotenido basura que no queremos
     @ManyToMany
     @JoinTable(
             name = "users_roles",
@@ -33,8 +38,16 @@ public class Users {
     )
     private List<Role> roleList;
 
+    private boolean enable; // de la bd ya esta
+    @PrePersist
+    public  void prePersist (){
+        enable = true; // es true cunado se  crea
+    }
+
     @Transient // de pa la clase no de la bd
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private boolean admin;
+
 
     public Users() {
         this.roleList = new ArrayList<>();
@@ -78,5 +91,25 @@ public class Users {
 
     public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Users users = (Users) o;
+        return Objects.equals(id, users.id) && Objects.equals(username, users.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username);
     }
 }

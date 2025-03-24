@@ -1,8 +1,11 @@
 package com.agenciatorus.api.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "roles")
@@ -13,10 +16,13 @@ public class Role {
     private Long id;
     @Column(unique = true)
     private String name;
+
+    @JsonIgnoreProperties({"roleList", "handler", "hibernateLazyInitializer"})
     @ManyToMany(mappedBy = "roleList")
     private List<Users> usersList;
 
     public Role() {
+        this.usersList = new ArrayList<>();
     }
 
     public Long getId() {
@@ -41,5 +47,17 @@ public class Role {
 
     public void setUsersList(List<Users> usersList) {
         this.usersList = usersList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return Objects.equals(id, role.id) && Objects.equals(name, role.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
