@@ -7,4 +7,5 @@ import java.util.List;
 public interface UserServices {
     List<Users> findAll();
     Users save(Users user);
+    boolean existsByUsername(String username);
 }
