@@ -18,10 +18,13 @@ C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatoru
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Repository\TourDetailsRepository.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Repository\ToursRepository.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Repository\UserRepository.java
+C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Segurity\filter\JwtAuthenticacionFilter.java
+C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Segurity\filter\TokenJwtConfig.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Segurity\SpringSecurityConfig.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\DTO\DetailsDto.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\DTO\ReservasDto.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\DTO\TourDto.java
+C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\JpaUserDetailsService.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\ReservaServices.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\ToursServices.java
 C:\Users\Luis\Desktop\tareas\Agencia de viajes\api\src\main\java\com\agenciatorus\api\Services\UserServices.java

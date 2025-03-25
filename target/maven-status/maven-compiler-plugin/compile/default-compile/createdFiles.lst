@@ -12,6 +12,7 @@ com\agenciatorus\api\Entities\Highlights.class
 com\agenciatorus\api\Repository\PopularityRepository.class
 com\agenciatorus\api\Entities\TourDetails.class
 com\agenciatorus\api\Services\UserServices.class
+com\agenciatorus\api\Segurity\filter\JwtAuthenticacionFilter.class
 com\agenciatorus\api\Services\DTO\ReservasDto.class
 com\agenciatorus\api\Entities\Users.class
 com\agenciatorus\api\Repository\ReservaRepository.class
@@ -19,6 +20,7 @@ com\agenciatorus\api\Repository\RoleRepository.class
 com\agenciatorus\api\Repository\UserRepository.class
 com\agenciatorus\api\Services\ToursServices.class
 com\agenciatorus\api\Segurity\SpringSecurityConfig.class
+com\agenciatorus\api\Segurity\filter\TokenJwtConfig.class
 com\agenciatorus\api\Entities\Tours.class
 com\agenciatorus\api\Services\ReservaServices.class
 com\agenciatorus\api\ApiApplication.class
@@ -27,4 +29,5 @@ com\agenciatorus\api\Services\DTO\DetailsDto.class
 com\agenciatorus\api\Entities\Popularity.class
 com\agenciatorus\api\Services\UserServicesImpl.class
 com\agenciatorus\api\Controller\frontend\ToursController.class
+com\agenciatorus\api\Services\JpaUserDetailsService.class
 com\agenciatorus\api\validation\ExistsByUsernameValidation.class

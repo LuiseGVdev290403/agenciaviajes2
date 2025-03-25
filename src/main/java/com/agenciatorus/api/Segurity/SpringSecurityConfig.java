@@ -1,8 +1,12 @@
 package com.agenciatorus.api.Segurity;
 
+import com.agenciatorus.api.Segurity.filter.JwtAuthenticacionFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +15,16 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SpringSecurityConfig {
+    /*
+    * paso 3 */
+    @Autowired
+    private AuthenticationConfiguration authenticationManagerConfiguration;
+
+    @Bean
+    AuthenticationManager authenticationManager() throws Exception {
+        return authenticationManagerConfiguration.getAuthenticationManager();
+    }
+
     /*
     *paso 1: incriptar contraseña con springSecurity-> passwordEncoder @Bean
     */
@@ -30,6 +44,7 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.GET,"/dashboard/user").permitAll()
                         .requestMatchers(HttpMethod.POST,"/dashboard/user/register").permitAll()
                 .anyRequest().authenticated())
+                .addFilter(new JwtAuthenticacionFilter(authenticationManager()))
                 .csrf(config -> config.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
