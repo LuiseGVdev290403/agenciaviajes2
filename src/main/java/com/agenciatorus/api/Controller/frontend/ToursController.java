@@ -22,10 +22,7 @@ public class ToursController {
     private Map<String, Object> mostrarTours() {
         return toursServices.mostrarTours();
     }
-    @PostMapping("/agregar")
-    private ResponseEntity<?> reservar(@RequestBody ReservasDto reservasDto){
-        return reservaServices.reservasAgregar(reservasDto);
-    }
+
     @GetMapping("/tourid/{id}")
     public  ResponseEntity<?> obtenerTour(@PathVariable Long id){
         return toursServices.obtenerTourId(id);

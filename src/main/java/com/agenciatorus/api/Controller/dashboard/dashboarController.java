@@ -2,6 +2,7 @@ package com.agenciatorus.api.Controller.dashboard;
 
 import java.util.Map;
 
+import com.agenciatorus.api.Services.DTO.ReservasDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,6 +40,10 @@ public class dashboarController {
     @GetMapping("/verTours")
     private Map<String, Object> verTours(){
         return toursServices.mostrarTours();
+    }
+    @PostMapping("/agregarreserva")
+    private ResponseEntity<?> reservar(@RequestBody ReservasDto reservasDto){
+        return reservaServices.reservasAgregar(reservasDto);
     }
     @GetMapping("/verReservas")
     private ResponseEntity<?> verReservas(){

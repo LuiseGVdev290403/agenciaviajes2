@@ -69,7 +69,7 @@ public class JwtAuthenticacionFilter extends UsernamePasswordAuthenticationFilte
 
         // datos que se manda en el json en este caso mandamos los roles
         Claims claims = Jwts.claims()
-                .add("authorities", roles)
+                .add("authorities", new ObjectMapper().writeValueAsString(roles))
                 .add("username", username)
                 .build();
 

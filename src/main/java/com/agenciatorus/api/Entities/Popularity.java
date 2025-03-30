@@ -28,6 +28,11 @@ public class Popularity {
     public Popularity() {
     }
 
+    public Popularity(boolean isPopular, String rank) {
+        this.isPopular = isPopular;
+        this.rank = rank;
+    }
+
     public Popularity(Tours tour, boolean isPopular, String rank) {
         this.tour = tour;
         this.isPopular = isPopular;

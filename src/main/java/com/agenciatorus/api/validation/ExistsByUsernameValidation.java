@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ExistsByUsernameValidation implements ConstraintValidator<ExistsByUSername, String> {
+public class ExistsByUsernameValidation implements ConstraintValidator<ExistsByUsername, String> {
 
     @Autowired
     private UserServices userServices;
@@ -16,6 +16,9 @@ public class ExistsByUsernameValidation implements ConstraintValidator<ExistsByU
 
     @Override
     public boolean isValid(String username, ConstraintValidatorContext constraintValidatorContext) {
+        if (userServices == null) {
+            return true;
+        }
         return !userServices.existsByUsername(username);
     }
 }

@@ -1,11 +1,7 @@
 package com.agenciatorus.api.Services;
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +23,8 @@ import com.agenciatorus.api.Services.DTO.DetailsDto;
 import com.agenciatorus.api.Services.DTO.TourDto;
 
 import jakarta.persistence.EntityNotFoundException;
+
+import javax.management.ObjectName;
 
 @Service
 public class ToursServices {
@@ -227,7 +225,33 @@ public class ToursServices {
     public ResponseEntity<?> obtenerTourId(Long id){
         try {
             Tours tours = toursRepository.findById(id).orElseThrow(()-> new ExpressionException("Hay un error"));
-            return ResponseEntity.ok().body(tours);
+            String highlights[] = new String[tours.getHighlights().toArray().length];
+            int aux= 0;
+            for (Highlights highlights1 : tours.getHighlights()){
+
+                highlights[aux] = highlights1.getHighlight();
+                aux++;
+            }
+
+
+            // json
+            Map<String, Object> tourID = new HashMap<>();
+            tourID.put("id", tours.getId());
+            tourID.put("title", tours.getTitle());
+            tourID.put("country", tours.getCountry());
+            tourID.put("location", tours.getLocation());
+            tourID.put("image", tours.getImage());
+            tourID.put("description", tours.getDescription());
+            tourID.put("long_description", tours.getLongDesciption());
+            tourID.put("details", new DetailsDto(tours.getTourDetails().getPriceAmount(),  tours.getTourDetails().getPriceCurrency(), (int) tours.getTourDetails().getDurationDays(), tours.getTourDetails().getMaxPeople(),  tours.getTourDetails().getCategory()));
+            tourID.put("popular", tours.getPopularity().isPopular());
+            tourID.put("rank", tours.getPopularity().getRank());
+            tourID.put("totalReviews", tours.getReviews().getTotal());
+            tourID.put("raiting", tours.getReviews().getRaiting());
+            tourID.put("highlights", highlights);
+
+
+            return ResponseEntity.ok().body(tourID);
         } catch (ExpressionException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

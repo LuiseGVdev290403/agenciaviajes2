@@ -1,7 +1,8 @@
 com\agenciatorus\api\Services\DTO\TourDto.class
+com\agenciatorus\api\Segurity\filter\JwtValidationFilter.class
 com\agenciatorus\api\Repository\TourDetailsRepository.class
 com\agenciatorus\api\Controller\dashboard\dashboarController.class
-com\agenciatorus\api\validation\ExistsByUSername.class
+com\agenciatorus\api\validation\ExistsByUsername.class
 com\agenciatorus\api\Entities\Reservas.class
 com\agenciatorus\api\Entities\Reviews.class
 com\agenciatorus\api\Repository\HighlightsRepository.class
@@ -28,6 +29,7 @@ com\agenciatorus\api\Controller\dashboard\UserController.class
 com\agenciatorus\api\Services\DTO\DetailsDto.class
 com\agenciatorus\api\Entities\Popularity.class
 com\agenciatorus\api\Services\UserServicesImpl.class
+com\agenciatorus\api\Segurity\SimpleGrantedAuthorityJsonCreator.class
 com\agenciatorus\api\Controller\frontend\ToursController.class
 com\agenciatorus\api\Services\JpaUserDetailsService.class
 com\agenciatorus\api\validation\ExistsByUsernameValidation.class

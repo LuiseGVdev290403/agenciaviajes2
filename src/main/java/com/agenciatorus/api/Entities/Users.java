@@ -1,7 +1,6 @@
 package com.agenciatorus.api.Entities;
 
-import com.agenciatorus.api.validation.ExistsByUSername;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.agenciatorus.api.validation.ExistsByUsername;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -20,7 +19,7 @@ public class Users {
     @Column(name = "idusers")
     private Long id;
 
-    @ExistsByUSername//creado por mi esa anotacion
+    @ExistsByUsername//creado por mi esa anotacion
     @Column(unique = true)
     @NotBlank // no puede servacio
     @Size(min = 4, max = 12)

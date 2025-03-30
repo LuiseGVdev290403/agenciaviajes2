@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = ExistsByUsernameValidation.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistsByUSername {
+public @interface ExistsByUsername {
     String message() default " ya existe en la base de datos!, escoja otro username";
 
     Class<?>[] groups() default {};

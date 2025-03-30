@@ -36,8 +36,17 @@ public class TourDetails {
     public TourDetails() {
     }
 
+    public TourDetails(int maxPeople, double durationDays, double priceAmount, String priceCurrency, String category) {
+
+        this.maxPeople = maxPeople;
+        this.durationDays = durationDays;
+        this.priceAmount = priceAmount;
+        this.priceCurrency = priceCurrency;
+        this.category = category;
+    }
+
     public TourDetails(Tours tour, int max_people, double durationDays, double priceAmount, String priceCurrency,
-            String category) {
+                       String category) {
         this.tour = tour;
         this.maxPeople = max_people;
         this.durationDays = durationDays;
