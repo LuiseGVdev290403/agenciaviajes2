@@ -67,6 +67,8 @@ public class SpringSecurityConfig {
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
+    /**
+     * Permite al cliente acceder a los endpoinst para autenticarse*/
     @Bean
     CorsConfigurationSource corsConfigurationSource (){
         CorsConfiguration config = new CorsConfiguration();
